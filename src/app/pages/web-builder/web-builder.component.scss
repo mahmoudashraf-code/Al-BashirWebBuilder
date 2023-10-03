@@ -1,0 +1,21 @@
+#fonts {
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background-color: #e4e4e4;
+    header {
+        color: white;
+        display: grid;
+        z-index: 1000;
+        grid-template-columns: 1fr auto;
+        box-shadow: 0 0 3px black;
+        h2 {
+            padding: 6px;
+            margin-left: 2px;
+        }
+    }
+    section {
+        overflow: auto;
+        padding: 50px;
+    }
+}

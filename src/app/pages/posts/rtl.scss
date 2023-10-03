@@ -1,0 +1,42 @@
+[dir="rtl"] {
+    ul.buttonGroup.dev {
+        left: auto !important;
+        right: 0;
+    }
+    ::ng-deep {
+        .p-timeline-event-content,
+        .p-timeline-event-opposite {
+            text-align: right !important;
+        }
+        ul.listPost {
+            margin-left: 0 !important;
+            margin-right: 45px;
+        }
+        .product-grid-item-top .product-category-icon {
+            margin-left: 0.5rem;
+            margin-right: 0 !important;
+        }
+        .p-paginator-bottom {
+            direction: ltr;
+        }
+        .p-button .p-button-icon-left {
+            margin-left: 0.5rem;
+            margin-right: 0 !important;
+        }
+        .p-fieldset.p-fieldset-toggleable .p-fieldset-legend a .p-fieldset-toggler {
+            margin-left: 0.5rem;
+            margin-right: 0 !important;
+        }
+        .p-message.p-message-info {
+            border-width: 0 6px 0 0 !important;
+        }
+        .p-accordion .p-accordion-header .p-accordion-header-link .p-accordion-toggle-icon {
+            margin-right: 0 !important;
+            margin-left: 0.5rem;
+            transform: rotate(180deg);
+            &.pi-chevron-down {
+                transform: rotate(0) !important;
+            }
+        }
+    }
+}

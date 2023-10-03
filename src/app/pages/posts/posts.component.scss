@@ -1,0 +1,133 @@
+#bashir-gui {
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    #mainPost {
+        padding: 0.5rem;
+    }
+    &.min {
+        header nav > div,
+        #mainPost {
+            width: 80%;
+            margin: auto;
+            padding: 0;
+        }
+    }
+    header {
+        box-shadow: 0 0 3px black;
+        z-index: 1000;
+        i {
+            font-size: 25px;
+        }
+        nav > div {
+            display: grid;
+            height: 37.5px;
+            grid-template-columns: 1fr auto;
+            h2 {
+                padding: 6px;
+                margin-left: 2px;
+            }
+        }
+        ul.dev {
+            position: absolute;
+            top: 32%;
+            left: 0;
+            li {
+                display: block;
+            }
+        }
+    }
+    header,
+    footer {
+        &.fill {
+            & > div {
+                display: none;
+            }
+            nav {
+                color: white !important;
+            }
+        }
+        &.strock {
+            nav {
+                background-color: white !important;
+                ul.dev {
+                    background: none !important;
+                }
+            }
+            &.theme1 li:hover {
+                background-color: var(--blue-100);
+            }
+            &.theme2 li:hover {
+                background-color: var(--green-100);
+            }
+            &.theme3 li:hover {
+                background-color: var(--yellow-100);
+            }
+            &.theme4 li:hover {
+                background-color: var(--cyan-100);
+            }
+            &.theme5 li:hover {
+                background-color: var(--pink-100);
+            }
+            &.theme6 li:hover {
+                background-color: var(--indigo-100);
+            }
+            &.theme7 li:hover {
+                background-color: var(--teal-100);
+            }
+            &.theme8 li:hover {
+                background-color: var(--orange-100);
+            }
+            &.theme9 li:hover {
+                background-color: var(--bluegray-100);
+            }
+            &.theme10 li:hover {
+                background-color: var(--purple-100);
+            }
+        }
+        & > div {
+            height: 7px;
+        }
+    }
+    section {
+        overflow: auto;
+        footer nav {
+            p {
+                text-align: end;
+                font-weight: bold;
+                padding: 10px;
+                opacity: 0.6;
+                &:hover {
+                    text-decoration: underline;
+                    opacity: 1;
+                }
+            }
+            div {
+                height: 200px;
+                display: flex;
+                i {
+                    font-size: 53px;
+                }
+                justify-content: center;
+                align-items: center;
+            }
+            li {
+                margin: 0 35px;
+            }
+        }
+    }
+    @import "./media.scss";
+}
+textarea {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    resize: none;
+}
+.p-inputgroup {
+    padding: 5px 0;
+}
+@import "rtl.scss";

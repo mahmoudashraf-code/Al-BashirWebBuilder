@@ -1,0 +1,21 @@
+@media screen and (max-width: 500px) {
+    header nav > div,
+    #mainPost {
+        width: auto !important;
+        margin: auto;
+    }
+    #mainPost {
+        padding: 0.5rem !important;
+    }
+    footer nav {
+        div i {
+            font-size: 40px !important;
+        }
+        li {
+            margin: 0 13px !important;
+        }
+        p {
+            font-size: 10px;
+        }
+    }
+}

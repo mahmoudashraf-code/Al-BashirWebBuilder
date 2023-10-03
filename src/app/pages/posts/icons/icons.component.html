@@ -1,0 +1,12 @@
+<p-dialog dir="ltr" [maximizable]="true" header="Icons" [closable]="false" [visible]="true"
+    [style]="{'width': '800px','height':'100%'}" [modal]="true">
+    <ul class="buttonGroup">
+        <li *ngFor="let x of icons" [title]="x" (click)="select.emit(x)">
+            <i [class]="'pi pi-'+x"></i>
+        </li>
+    </ul>
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="close()" label="Close" styleClass="p-button-text">
+        </p-button>
+    </ng-template>
+</p-dialog>

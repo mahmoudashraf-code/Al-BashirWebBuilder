@@ -1,0 +1,10 @@
+i {
+    font-size: 30px;
+}
+li {
+    padding: 11px !important;
+    &:hover {
+        background-color: #d1d5d1 !important;
+        box-shadow: 0 0 2px;
+    }
+}

@@ -1,0 +1,131 @@
+<div id="bashir-gui" [dir]="data?.dir" [ngClass]="data?.width">
+    <p-messages [(value)]="msgs"></p-messages>
+    <header [ngClass]="data?.header.style + ' ' + data?.theme" *ngIf="data?.header">
+        <nav [ngStyle]="{backgroundColor:getTheme(data?.theme,800),color:getTheme(data?.theme,800)}">
+            <div>
+                <h2>{{data?.header.title}}</h2>
+                <ul class="buttonGroup">
+                    <li (click)="addButton('header')" *ngIf="data?.dev">
+                        <i class="pi pi-plus"></i>
+                    </li>
+                    <li *ngFor="let x of data?.header.buttons;index as i" (click)="nav('header',i)">
+                        <i [class]="'pi pi-'+x.icon"></i>
+                    </li>
+                </ul>
+                <ul class="buttonGroup dev" [ngStyle]="{backgroundColor:getTheme(data?.theme,800)}"
+                    *ngIf="data.devTools">
+                    <li (click)="displaySettingPage=true">
+                        <i class="pi pi-cog"></i>
+                    </li>
+                    <li (click)="displayEditedPage=true">
+                        <i class="pi pi-pencil"></i>
+                    </li>
+                    <li (click)="ngOnInit()">
+                        <i class="pi pi-refresh"></i>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div [ngStyle]="{backgroundColor:getTheme(data?.theme,800)}"></div>
+    </header>
+    <section [ngStyle]="{backgroundColor:getTheme(data?.theme,50)}">
+        <div *ngIf="data.body" id="mainPost">
+            <bashir-gui-editor [data]="data?.body" (openDialog)="display=selectEle=$event;true"></bashir-gui-editor>
+        </div>
+        <footer [ngClass]="data?.footer?.style + ' ' + data?.theme" *ngIf="data?.footer">
+            <div [ngStyle]="{backgroundColor:getTheme(data?.theme,700)}"></div>
+            <nav [ngStyle]="{backgroundColor:getTheme(data?.theme,700),color:getTheme(data?.theme,700)}">
+                <div>
+                    <ul class="buttonGroup">
+                        <li (click)="addButton('footer')" *ngIf="data?.dev">
+                            <i class="pi pi-plus"></i>
+                        </li>
+                        <li *ngFor="let x of data?.footer?.buttons;index as i" (click)="nav('footer',i)">
+                            <i [class]="'pi pi-'+x.icon"></i>
+                        </li>
+                    </ul>
+                </div>
+                <p dir="ltr" (click)="openTab('newTab','/')">Power By Al-Bashir Web Builder</p>
+            </nav>
+        </footer>
+    </section>
+    <p-dialog *ngIf="display" [maximizable]="true" (onHide)="selectEle=undefined" [header]="selectEle?.name"
+        [(visible)]="display" [style]="{'width': '800px','height':'100%'}" [modal]="true">
+        <bashir-gui-editor [object]="getDataForDialog(selectEle?.url)"></bashir-gui-editor>
+        <ng-template pTemplate="footer">
+            <p-button icon="pi pi-check" (click)="display=false" label="Ok" styleClass="p-button-text">
+            </p-button>
+        </ng-template>
+    </p-dialog>
+    <p-dialog dir="ltr" *ngIf="displayEditedPage" [blockScroll]="true" [maximizable]="true" header="Edited Page"
+        [(visible)]="displayEditedPage" [style]="{'width': '800px','height':'100%'}" [modal]="true">
+        <textarea [value]="getDataJson()" #ele></textarea>
+        <ng-template pTemplate="footer">
+            <p-button icon="pi pi-check" (click)="update(ele.value)" label="Update" styleClass="p-button-text">
+            </p-button>
+        </ng-template>
+    </p-dialog>
+    <p-sidebar [(visible)]="displaySettingPage" [position]="data.dir=='rtl'?'right':'left'">
+        <div style="padding-top: 35px;" dir="ltr">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">Theme</span>
+                <select pInputText (change)="data.theme=ele.value" #ele [value]="data.theme">
+                    <option value="theme1">theme1</option>
+                    <option value="theme2">theme2</option>
+                    <option value="theme3">theme3</option>
+                    <option value="theme4">theme4</option>
+                    <option value="theme5">theme5</option>
+                    <option value="theme6">theme6</option>
+                    <option value="theme7">theme7</option>
+                    <option value="theme8">theme8</option>
+                    <option value="theme9">theme9</option>
+                    <option value="theme10">theme10</option>
+                </select>
+            </div>
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">Width</span>
+                <select pInputText (change)="data.width=ele2.value" #ele2 [value]="data.width">
+                    <option value="min">min</option>
+                    <option value="max">max</option>
+                </select>
+            </div>
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">Direction</span>
+                <select pInputText (change)="data.dir=ele3.value" #ele3 [value]="data.dir">
+                    <option value="ltr">ltr</option>
+                    <option value="rtl">rtl</option>
+                </select>
+            </div>
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">Dev</span>
+                <select pInputText (change)="data.dev=boolStr(ele4.value)" #ele4 [value]="data.dev">
+                    <option [value]="true">true</option>
+                    <option [value]="false">false</option>
+                </select>
+            </div>
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">dev tools</span>
+                <select pInputText (change)="data.devTools=boolStr(ele5.value)" #ele5 [value]="data.devTools">
+                    <option [value]="true">true</option>
+                    <option [value]="false">false</option>
+                </select>
+            </div>
+            <div class="p-inputgroup" *ngIf="data.header">
+                <span class="p-inputgroup-addon">Header Style</span>
+                <select pInputText (change)="data.header.style=ele6.value" #ele6 [value]="data?.header?.style">
+                    <option value="strock">strock</option>
+                    <option value="fill">fill</option>
+                </select>
+            </div>
+            <div class="p-inputgroup" *ngIf="data.footer">
+                <span class="p-inputgroup-addon">Footer Style</span>
+                <select pInputText (change)="data.footer.style=ele7.value" #ele7 [value]="data?.footer?.style">
+                    <option value="strock">strock</option>
+                    <option value="fill">fill</option>
+                </select>
+            </div>
+        </div>
+    </p-sidebar>
+    <app-icons *ngIf="displayIcons" (close)="displayIcons=false"
+        (select)="data[selectIcons[0]].buttons[selectIcons[1]].icon=$event;displayIcons=false"></app-icons>
+</div>
