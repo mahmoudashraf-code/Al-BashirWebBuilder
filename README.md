@@ -2,8 +2,7 @@
 This is a web app built using Angular to generate static web site using json file.
 
 ## Demo
-https://al-bashir-web-builder-olrbeziqi-mahmoudashraf-code.vercel.app/
-
+https://al-bashir-web-builder.vercel.app/
 
 
 ## Screenshots
