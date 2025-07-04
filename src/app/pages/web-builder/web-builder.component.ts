@@ -30,4 +30,22 @@ export class WebBuilderComponent implements OnInit {
       console.error('Failed to copy URL: ', err);
     });
   }
+
+  shareWebsite() {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Al-Bashir Web Builder - Generated Website',
+        text: 'Check out this website I built with Al-Bashir Web Builder',
+        url: this.url
+      }).then(() => {
+        console.log('Website shared successfully');
+      }).catch(err => {
+        console.error('Error sharing website: ', err);
+        this.copyToClipboard();
+      });
+    } else {
+      this.copyToClipboard();
+      console.log('URL copied to clipboard (sharing not supported)');
+    }
+  }
 }
