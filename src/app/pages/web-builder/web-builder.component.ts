@@ -22,4 +22,12 @@ export class WebBuilderComponent implements OnInit {
   open(){
     window.open(this.url)
   }
+  copyToClipboard() {
+    navigator.clipboard.writeText(this.url).then(() => {
+      // You can add a toast notification here if needed
+      console.log('URL copied to clipboard');
+    }).catch(err => {
+      console.error('Failed to copy URL: ', err);
+    });
+  }
 }
