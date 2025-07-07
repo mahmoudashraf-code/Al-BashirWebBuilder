@@ -5,14 +5,38 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
 svg.logo,
 img.logo {
     width: 25px;
     height: 25px;
 }
+
 body,
 html {
     user-select: none;
     height: 100%;
+}
+
+// Responsive typography
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 13px;
+    }
+}
+
+// Better touch targets for mobile
+@media (max-width: 768px) {
+    button, .p-button, [role="button"] {
+        min-height: 44px;
+        min-width: 44px;
+    }
 }

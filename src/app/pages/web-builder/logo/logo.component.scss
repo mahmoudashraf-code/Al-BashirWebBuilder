@@ -1,0 +1,60 @@
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+
+  svg {
+    max-width: 100%;
+    height: auto;
+    width: 994px;
+    max-height: 250px;
+    
+    // Responsive breakpoints
+    @media (max-width: 1200px) {
+      width: 80%;
+      max-width: 795px;
+    }
+    
+    @media (max-width: 992px) {
+      width: 70%;
+      max-width: 696px;
+    }
+    
+    @media (max-width: 768px) {
+      width: 90%;
+      max-width: 600px;
+    }
+    
+    @media (max-width: 576px) {
+      width: 95%;
+      max-width: 400px;
+    }
+    
+    @media (max-width: 480px) {
+      width: 100%;
+      max-width: 350px;
+    }
+    
+    @media (max-width: 360px) {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+}
+
+// Animation performance optimization for mobile
+@media (prefers-reduced-motion: reduce) {
+  svg {
+    * {
+      animation: none !important;
+    }
+  }
+}
+
+// Ensure crisp rendering on high-DPI displays
+svg {
+  shape-rendering: geometricPrecision;
+  text-rendering: optimizeLegibility;
+}
